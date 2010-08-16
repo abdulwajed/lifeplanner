@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <ref name="Life"/>
+  </start>
+  <define name="Life">
+    <element name="life">
+      <interleave>
+        <oneOrMore>
+          <ref name="Term"/>
+        </oneOrMore>
+        <oneOrMore>
+          <ref name="Program"/>
+        </oneOrMore>
+      </interleave>
+    </element>
+  </define>
+  <define name="Term">
+    <element name="term">
+      <zeroOrMore>
+        <ref name="Course"/>
+      </zeroOrMore>
+      <attribute name="date"/>
+    </element>
+  </define>
+  <define name="Course">
+    <element name="course">
+      <attribute name="name"/>
+      <attribute name="credits"/>
+      <optional>
+        <attribute name="status"/>
+      </optional>
+      <element name="title">
+        <text/>
+      </element>
+      <zeroOrMore>
+        <element name="prerequisite">
+          <attribute name="count"/>
+          <oneOrMore>
+            <element name="name">
+              <text/>
+            </element>
+          </oneOrMore>
+        </element>
+      </zeroOrMore>
+      <zeroOrMore>
+        <element name="corequisite">
+          <oneOrMore>
+            <element name="name">
+              <text/>
+            </element>
+          </oneOrMore>
+        </element>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="Required">
+    <element name="required">
+      <text/>
+    </element>
+  </define>
+  <define name="Complementary">
+    <element name="complementary">
+      <attribute name="count"/>
+      <oneOrMore>
+        <element name="group">
+          <attribute name="credits"/>
+          <attribute name="name"/>
+          <choice>
+            <oneOrMore>
+              <element name="level">
+                <text/>
+              </element>
+            </oneOrMore>
+            <oneOrMore>
+              <element name="name">
+                <text/>
+              </element>
+            </oneOrMore>
+          </choice>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="Program">
+    <element name="program">
+      <attribute name="name"/>
+      <interleave>
+        <zeroOrMore>
+          <ref name="Required"/>
+        </zeroOrMore>
+        <zeroOrMore>
+          <ref name="Complementary"/>
+        </zeroOrMore>
+      </interleave>
+    </element>
+  </define>
+</grammar>

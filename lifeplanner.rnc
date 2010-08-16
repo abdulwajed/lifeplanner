@@ -1,0 +1,37 @@
+start = Life
+
+Life = element life {Term+ & Program+}
+
+Term = element term {Course*, attribute date{text}}
+
+Course = element course{
+       attribute name {text},
+       attribute credits {text},
+       attribute status {text}?,
+       element title {text},
+       element prerequisite {
+       	       attribute count {text},
+	       element name {text}+
+        }*,
+	element corequisite {
+		element name {text}+
+	}*
+}
+
+Required = element required {text}
+
+Complementary = element complementary {
+	      attribute count {text},
+	      element group {
+	      	      attribute credits{text},
+		      attribute name{text},
+		      ((element level{text}+) | (element name{text}+))
+		}+
+}
+
+Program = element program {
+	attribute name{text},
+	(Required* & Complementary*)
+}
+
+
