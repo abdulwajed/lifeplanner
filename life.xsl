@@ -8,7 +8,7 @@
 	      doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
   
   <xsl:template match="/">
-    <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" lang="en" xml:lang="en">
       <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Life</title>
@@ -20,9 +20,8 @@
       </head>
       <body>
 	<a name="top" />
-	<map name="life">
-	  </map>
-	<img src="life.png" usemap="#life" /><br /><br />
+	<svg:svg id="life"/>
+	<br /><br />
 	<table>
 	  <xsl:variable name="totalPossiblePoints">0</xsl:variable>
 	  <xsl:variable name="totalEarnedPoints">0</xsl:variable>

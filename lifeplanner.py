@@ -1,8 +1,7 @@
 #!/usr/local/bin/python2.4
 
-import os, sys, popen2, optparse, copy
+import sys, subprocess, shlex
 from lxml import etree
-from StringIO import StringIO
 
 termtypes = {"00":"transfer",
 	     "01":"winter",
@@ -219,30 +218,28 @@ dot_xslt = etree.XSLT(etree.parse("dot.xsl"))
 
 dotfile = str(dot_xslt(lifeplan))
 
-dotproc = popen2.Popen3("/usr/local/graphviz-2.9/bin/dot -Tpng -olife.png -Tcmap", True)
+print dotfile
 
-dotproc.tochild.write(dotfile)
-dotproc.tochild.close()
+dotproc = subprocess.Popen(shlex.split("dot -Tsvg"), stdin=subprocess.PIPE, 
+                           stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-fromdot = dotproc.fromchild.read()
-dotproc.fromchild.close()
+(stdout, stderr) = dotproc.communicate(dotfile)
 
-s = dotproc.wait()
-
-if os.WIFEXITED(s) and os.WEXITSTATUS(s) > 0:
+if dotproc.returncode != 0:
     print "Problem with dot:"
-    print dotproc.childerr.read()
+    print stderr
     sys.exit(1)
 
-map = etree.parse(StringIO(fromdot), etree.HTMLParser())
+map = etree.fromstring(stdout)
 
 life_xslt = etree.XSLT(etree.parse("life.xsl"))
 
+dot_svg = map.xpath("/svg:svg", namespaces={'svg':'http://www.w3.org/2000/svg'})[0]
+
 life_html = life_xslt(lifeplan, currentTerm="200701")
 
-mapnode = life_html.xpath("//h:map[@name='life']",{'h':'http://www.w3.org/1999/xhtml'})[0]
+mapnode = life_html.xpath("//svg:svg[@id = 'life']",namespaces={'svg':'http://www.w3.org/2000/svg'})[0]
 
-for e in map.findall("//area"):
-    mapnode.append(e)
+mapnode.getparent().replace(mapnode, dot_svg)
 
-life_html.write("life.html", pretty_print=True)
+life_html.write("life_out.xml", pretty_print=True)
