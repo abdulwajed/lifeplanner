@@ -22,17 +22,16 @@ marks = {"A":4.0,
 
 parser = etree.XMLParser(remove_blank_text=True)
 lifeplan = etree.parse("life.xml", parser)
-courses = etree.parse("courses.xml", parser)
-programs = etree.parse("programs.xml", parser)
+#courses = etree.parse("courses.xml", parser)
+#programs = etree.parse("programs.xml", parser)
 
-#relaxng = etree.RelaxNG(etree.parse("lifeplanner.rng"))
-#if not relaxng.validate(doc):
-#    print "Could not parse life:"
-#    print relaxng.error_log.last_error
-#    sys.exit(1)
+relaxng = etree.RelaxNG(etree.parse("lifeplanner.rng"))
+if not relaxng.validate(lifeplan):
+    print "Could not parse life:"
+    print relaxng.error_log.last_error
+    sys.exit(1)
 
-def findCourse(name, term, type=""):
-    print type
+def findCourse(name, term):
     #The prerequisite restrictions are relaxed for summer terms.
     #There are three summer sessions but they are represented as
     #one catalog term, so we assume that courses are taken in the right order
@@ -82,37 +81,17 @@ def fixCourseMarks(course):
 	    course.attrib['status'] = "failed"
 
 	
-def getCourseData(course):
-    cdata = courses.xpath('//course[@name="'+course.attrib['name']+'"]')
-    if cdata:
-	cdata = copy.deepcopy(cdata[0])
-	if course.attrib.get("mark"):
-	    cdata.attrib['mark'] = course.attrib['mark']
-	term.remove(course)
-	term.append(cdata)
-	print courses.xpath('//course[@name="'+course.attrib['name']+'"]')
-    else:
-	print course.attrib['name']
-
-
-for program in lifeplan.findall("program"):
-    pdata = 
-
-for term in lifeplan.findall("term"):
-    date, type = fixTermDateType(term)
-
-    for course in term.getchildren():
-	getCourseData(course)
-
-    for course in term.getchildren():
-	fixCourseMarks(course)
-
 for term in lifeplan.findall("term"):
     #Don't process prerequisites and corequisites for transfer credits.
     #They're only in the data file so they can be used for calculating
     #credits and prerequisites for courses being taken now; it doesn't
     #matter if the prerequisites wouldn't be satisfied if the course
     #were taken for credit now.
+    date, type = fixTermDateType(term)
+
+    for course in term.getchildren():
+	fixCourseMarks(course)
+
     if type == "transfer":
 	continue
 
@@ -123,7 +102,7 @@ for term in lifeplan.findall("term"):
 	for prereqSet in course.findall("prerequisite"):
 	    count = int(prereqSet.attrib["count"])
 	    for prereq in prereqSet.findall("name"):
-		    if findCourse(prereq.text, date, type):
+		    if findCourse(prereq.text, date):
 			prereq.attrib['found'] = 'y'
 			count -= 1
 		    else:
@@ -148,7 +127,7 @@ for term in lifeplan.findall("term"):
 		course.attrib['inorder'] = "n"
 		    
 def checkPrograms():
-    for program in programs.findall("program"):
+    for program in lifeplan.findall("program"):
 	print "\nEvaluating program \""+program.attrib["name"]+"\":"
 	requiredCourses = program.findall("required")
 	
@@ -197,20 +176,6 @@ def checkPrograms():
 	    else:
 		print "\tProgram complementaries satisfied."
 
-#credits = 0
-#terms = courses.keys()
-#terms.sort()
-#for term in terms:
-#    print '\nTerm '+term
-#    tc = 0
-#    for course in courses[term]:
-#	print courses[term][course]
-#	credits += int(courses[term][course].credits)
-#	tc += int(courses[term][course].credits)
-
-#    print str(tc) + " credits for term"
-
-#print str(credits) + " credits total"
 
 checkPrograms()
 
