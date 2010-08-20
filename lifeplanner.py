@@ -22,8 +22,6 @@ marks = {"A":4.0,
 
 parser = etree.XMLParser(remove_blank_text=True)
 lifeplan = etree.parse("life.xml", parser)
-#courses = etree.parse("courses.xml", parser)
-#programs = etree.parse("programs.xml", parser)
 
 relaxng = etree.RelaxNG(etree.parse("lifeplanner.rng"))
 if not relaxng.validate(lifeplan):
@@ -37,6 +35,8 @@ def findCourse(name, term):
     #one catalog term, so we assume that courses are taken in the right order
     #if a course and its prerequisites are taken during the same summer term.
     #Obviously this may not be the case, but there's no way to test for it.
+
+    #FIXME: this should be broken (where is type coming from?); fix.
 
     if type=="summer":
 	return lifeplan.xpath("//course[not(@points=0) and ../@date <= "+term+" and @name='"+name+"']")
@@ -80,7 +80,7 @@ def fixCourseMarks(course):
 	    course.attrib['points'] = "0"
 	    course.attrib['status'] = "failed"
 
-	
+#FIXME: move this into a function of its own.
 for term in lifeplan.findall("term"):
     #Don't process prerequisites and corequisites for transfer credits.
     #They're only in the data file so they can be used for calculating
