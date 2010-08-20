@@ -5,7 +5,6 @@ from lxml import etree
 from Tkinter import *
 from notebook import *
 import tkSimpleDialog, tkMessageBox
-#from life import Planner
 
 parser = etree.XMLParser(remove_blank_text=True)
 doc = etree.parse("life.xml", parser)
@@ -275,10 +274,18 @@ class PlannerGUI:
 		etree.SubElement(etree.SubElement(course, "corequisite"),"name").text = coreq
 
 	def validate(self):
-	    #Constraints this dialog must check: course name and title are set
-	    #                                    number of credits is an int
-	    #FIXME: write this method
-	    return True
+            if not self.title.get():
+                tkMessageBox.showwarning("Course","The course title must be set.")
+                return False
+            if not self.name.get():
+                tkMessageBox.showwarning("Course","The course name must be set.")
+                return False
+            try:
+                c = int(self.credits.get())
+            except:
+                tkMessageBox.showwarning("Course","The number of credits must be an integer.")
+                return False
+            return True
 
 	def addCoreq(self):
 	    coreq = tkSimpleDialog.askstring("Add corequisite","Corequisite name")
