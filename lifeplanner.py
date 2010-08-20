@@ -183,8 +183,6 @@ dot_xslt = etree.XSLT(etree.parse("dot.xsl"))
 
 dotfile = str(dot_xslt(lifeplan))
 
-print dotfile
-
 dotproc = subprocess.Popen(shlex.split("dot -Tsvg"), stdin=subprocess.PIPE, 
                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
