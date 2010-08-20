@@ -20,7 +20,8 @@
 	<xsl:if test="@used = 'y'">
 	  <xsl:text> style="setlinewidth(4)"</xsl:text>
 	</xsl:if>
-	]
+	<xsl:text>]
+	</xsl:text>
 	<xsl:for-each select="prerequisite/name[@found='y']">
 	  <xsl:variable name="c" select="." />
 	  "<xsl:value-of select="$c" />.<xsl:value-of select="//term/course[@name=$c and not(@status='failed')]/../@date" />"-&gt;<xsl:value-of select="$courseNode" />
@@ -38,17 +39,17 @@
       </xsl:for-each>
     </xsl:for-each>
     <xsl:for-each select="//term"><xsl:value-of select="@date" /><xsl:if test="following-sibling::term">-&gt;</xsl:if></xsl:for-each>
-<xsl:for-each select="//term">
-<xsl:text>{ rank=same;</xsl:text>
-<xsl:value-of select="@date" /> [URL="#<xsl:value-of select="@date" />"];
-<xsl:for-each select="course">"<xsl:value-of select="@name" />.<xsl:value-of select="../@date"/>";</xsl:for-each>
-<xsl:text>
-}
-</xsl:text>
-</xsl:for-each>
-  <xsl:text>
-    }
-  </xsl:text>
-  
+    <xsl:for-each select="//term">
+      <xsl:text>{ rank=same;</xsl:text>
+      <xsl:value-of select="@date" /> [URL="#<xsl:value-of select="@date" />"];
+      <xsl:for-each select="course">"<xsl:value-of select="@name" />.<xsl:value-of select="../@date"/>";</xsl:for-each>
+      <xsl:text>
+	}
+      </xsl:text>
+    </xsl:for-each>
+    <xsl:text>
+      }
+    </xsl:text>
+    
   </xsl:template>
 </xsl:stylesheet>
