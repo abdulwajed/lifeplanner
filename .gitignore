@@ -14,3 +14,4 @@ parts
 develop-eggs
 .DS_Store
 life_out.xml
+life.xml
