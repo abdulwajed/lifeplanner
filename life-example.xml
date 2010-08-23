@@ -1,0 +1,356 @@
+<!-- A sample input file for the lifeplanner.
+     Any resemblance this may bear to courses I have taken
+     or may have planned to take is purely coincidental.
+     -->
+
+<life>
+  <term date="200500">
+    <course name="COMP 202" credits="3" >
+      <title>AP credit from AP CS AB</title>
+    </course>
+    <course name="ENGL 1XX" credits="3" >
+      <title>AP credit from AP Eng. Lang/Comp</title>
+    </course>
+  </term>
+  <term date="200509">
+    <course name="CHEM 110" credits="4" >
+      <title>General Chemistry 1</title>
+    </course>
+    <course name="MATH 140" credits="3" >
+      <title>Calculus 1</title>
+    </course>
+    <course name="MIME 308" credits="3" >
+      <title>Social Impact of Technology</title>
+    </course>
+    <course name="PHYS 131" credits="4" >
+      <title>Mechanics and Waves</title>
+    </course>
+  </term>
+  <term date="200601">
+    <course name="ANTH 208" credits="3" >
+      <title>Evolutionary Anthropology</title>
+    </course>
+    <course name="LING 201" credits="3" >
+      <title>Introduction to Linguistics</title>
+    </course>
+    <course name="PHIL 201" credits="3" >
+      <title>Intro to Philosophy 2</title>
+    </course>
+    <course name="PHIL 237" credits="3" >
+      <title>Contemporary Moral Issues</title>
+    </course>
+  </term>
+  <term date="200609">
+    <course name="COMP 206" credits="3" >
+      <title>Introduction to Software Systems</title>
+      <prerequisite count="1" >
+        <name >COMP 202</name>
+        <name >COMP 250</name>
+      </prerequisite>
+    </course>
+    <course name="LING 355" credits="3" >
+      <title>Language Acquisition 1</title>
+      <prerequisite count="1" >
+        <name >LING 201</name>
+      </prerequisite>
+    </course>
+    <course name="PHIL 210" credits="3" >
+      <title>Intro to Deductive Logic 1</title>
+    </course>
+    <course name="PHIL 343" credits="3" >
+      <title>Biomedical Ethics</title>
+    </course>
+    <course name="PHIL 348" credits="3" >
+      <title>Philosophy of Law 1</title>
+    </course>
+  </term>
+  <term date="200701">
+    <course name="ENVR 203" credits="3" >
+      <title>Knowledge, Ethics, and Environment</title>
+    </course>
+    <course name="LING 230" credits="3" >
+      <title>Phonetics</title>
+      <prerequisite count="1" >
+        <name >LING 201</name>
+      </prerequisite>
+    </course>
+    <course name="LING 371" credits="3" >
+      <title>Syntax 1</title>
+      <prerequisite count="1" >
+        <name >LING 201</name>
+      </prerequisite>
+    </course>
+    <course name="COMP 273" credits="3" >
+      <title>Introduction to Computer Systems</title>
+      <prerequisite count="1" >
+        <name >COMP 206</name>
+      </prerequisite>
+    </course>
+  </term>
+  <term date="200705">
+    <course name="MATH 133" credits="3" >
+      <title>Vectors, Matrices, and Geometry</title>
+    </course>
+    <course name="MATH 140" credits="3" >
+      <title>Calculus 1</title>
+    </course>
+    <course name="MATH 141" credits="4" >
+      <title>Calculus 2</title>
+      <prerequisite count="1" >
+        <name >MATH 140</name>
+      </prerequisite>
+    </course>
+  </term>
+  <term date="200709">
+    <course name="COMP 203" credits="3" >
+      <title>Introduction to Computing 2</title>
+      <prerequisite count="1" >
+        <name >MATH 133</name>
+      </prerequisite>
+      <prerequisite count="1" >
+        <name >COMP 202</name>
+      </prerequisite>
+    </course>
+    <course name="LING 331" credits="3" >
+      <title>Phonology 1</title>
+      <prerequisite count="1" >
+        <name >LING 230</name>
+      </prerequisite>
+    </course>
+    <course name="LING 571" credits="3" >
+      <title>Syntax 2</title>
+      <prerequisite count="1" >
+        <name >LING 371</name>
+      </prerequisite>
+    </course>
+    <course name="PHIL 375" credits="3" >
+      <title>Existentialism</title>
+    </course>
+  <course name="COMP 310" credits="3">
+    <title>Computer Systems and Organization</title>
+    <prerequisite count="1">
+      <name>COMP 273</name>
+    </prerequisite>
+  </course>
+  </term>
+  <term date="200801">
+    <course name="PHIL 334" credits="3">
+      <title>Ethics 1</title>
+      <prerequisite count="1">
+        <name>PHIL 230</name>
+        <name>PHIL 237</name>
+        <name>PHIL 242</name>
+      </prerequisite>
+    </course>
+    <course name="COMP 302" credits="3" >
+      <title>Programming Languages and Paradigms</title>
+      <prerequisite count="1" >
+        <name >COMP 250</name>
+        <name >COMP 203</name>
+      </prerequisite>
+    </course>
+    <course name="LING 350" credits="3" >
+      <title>Linguistic Aspects of Bilingualism</title>
+      <prerequisite count="1" >
+        <name >LING 200</name>
+        <name >LING 201</name>
+      </prerequisite>
+    </course>
+    <course name="PHIL 367" credits="3" >
+      <title>19th Century Philosophy</title>
+    </course>
+  <course name="LING 370" credits="3">
+    <title>Introduction to Semantics</title>
+    <prerequisite count="1">
+      <name>PHIL 210</name>
+    </prerequisite>
+    <prerequisite count="1">
+      <name>LING 201</name>
+    </prerequisite>
+  </course>
+  </term>
+  <term date="200809">
+    <course name="LING 440" credits="3" >
+      <title>Morphology</title>
+      <prerequisite count="2" >
+        <name >LING 230</name>
+        <name >LING 371</name>
+      </prerequisite>
+    </course>
+    <course name="LING 455" credits="3" >
+      <title>Second Language Syntax</title>
+      <prerequisite count="1" >
+        <name >LING 301</name>
+        <name >LING 371</name>
+      </prerequisite>
+    </course>
+    <course name="COMP 535" credits="3" >
+      <title>Computer Networks 1</title>
+      <prerequisite count="1" >
+        <name >COMP 310</name>
+      </prerequisite>
+    </course>
+  <course name="COMP 520" credits="4">
+    <title>Compiler Design</title>
+    <prerequisite count="1">
+      <name>COMP 302</name>
+    </prerequisite> 
+    <prerequisite count="1">
+      <name>COMP 273</name>
+    </prerequisite>
+  </course>
+  <course name="GERM 202D1" credits="3">
+    <title>German Language, Beginners'</title>
+  </course>
+  </term>
+  <term date="200901">
+    <course name="PHIL 434" credits="3" >
+      <title>Ethics 2</title>
+      <prerequisite count="1" >
+        <name >PHIL 334</name>
+      </prerequisite>
+    </course>
+    <course name="LING 565" credits="3" >
+      <title>Pragmatics</title>
+      <prerequisite count="1" >
+        <name >LING 370</name>
+      </prerequisite>
+      <prerequisite count="1" >
+        <name >PHIL 210</name>
+      </prerequisite>
+    </course>
+    <course name="PHIL 304" credits="3" >
+      <title>Chomsky</title>
+    </course>
+    <course name="GERM 202D2" credits="3">
+      <title>German Language, Beginners'</title>
+      <prerequisite count="1">
+	<name>GERM 202D1</name>
+      </prerequisite>
+    </course>
+  </term>
+  <program name="Major Concentration in Linguistics">
+    <required>LING 201</required>
+    <required>LING 230</required>
+    <required>LING 331</required>
+    <required>LING 370</required>
+    <required>LING 371</required>
+    <required>LING 440</required>
+    <required>PHIL 210</required>
+    <complementary count="2">
+      <group credits="9" name="9 credits in Linguistics at the 400/500 level">
+        <level>LING 4</level>
+        <level>LING 5</level>
+      </group>
+      <group credits="6" name="6 credits in Linguistics (normally at the 200/300 level)">
+        <level>LING 2</level>
+        <level>LING 3</level>
+      </group>
+    </complementary>
+  </program>
+  <program name="Minor Concentration in Computer Science">
+    <required>COMP 202</required>
+    <required>COMP 203</required>
+    <required>COMP 206</required>
+    <required>COMP 302</required>
+    <complementary count="1">
+      <group credits="6" name="Complementary Courses">
+        <name>COMP 273</name>
+        <name>COMP 310</name>
+        <name>COMP 335</name>
+        <name>COMP 350</name>
+        <name>COMP 360</name>
+        <name>COMP 420</name>
+        <name>COMP 421</name>
+        <name>COMP 424</name>
+        <name>COMP 426</name>
+        <name>COMP 435</name>
+        <name>COMP 462</name>
+        <name>COMP 505</name>
+        <name>COMP 506</name>
+        <name>COMP 507</name>
+        <name>COMP 520</name>
+        <name>COMP 523</name>
+        <name>COMP 524</name>
+        <name>COMP 533</name>
+        <name>COMP 534</name>
+        <name>COMP 535</name>
+        <name>COMP 537</name>
+        <name>COMP 538</name>
+        <name>COMP 540</name>
+        <name>COMP 547</name>
+        <name>COMP 557</name>
+        <name>COMP 560</name>
+        <name>COMP 563</name>
+        <name>COMP 564</name>
+        <name>COMP 566</name>
+        <name>COMP 575</name>
+      </group>
+    </complementary>
+  </program>
+  <program name="Minor Concentration in Philosophy">
+    <complementary count="4">
+      <group credits="3" name="Group A">
+        <name>PHIL 230</name>
+        <name>PHIL 237</name>
+        <name>PHIL 242</name>
+        <name>PHIL 334</name>
+        <name>PHIL 343</name>
+        <name>PHIL 348</name>
+        <name>PHIL 434</name>
+        <name>PHIL 442</name>
+      </group>
+      <group credits="3" name="Group B">
+        <name>PHIL 210</name>
+        <name>PHIL 220</name>
+        <name>PHIL 221</name>
+        <name>PHIL 304</name>
+        <name>PHIL 306</name>
+        <name>PHIL 310</name>
+        <name>PHIL 341</name>
+        <name>PHIL 370</name>
+        <name>PHIL 410</name>
+        <name>PHIL 411</name>
+        <name>PHIL 415</name>
+        <name>PHIL 419</name>
+        <name>PHIL 421</name>
+        <name>PHIL 441</name>
+        <name>PHIL 470</name>
+      </group>
+      <group credits="3" name="Group C">
+        <name>PHIL 375</name>
+        <name>PHIL 474</name>
+        <name>PHIL 475</name>
+      </group>
+      <group credits="3" name="Group D">
+        <name>PHIL 344</name>
+        <name>PHIL 345</name>
+        <name>PHIL 350</name>
+        <name>PHIL 353</name>
+        <name>PHIL 354</name>
+        <name>PHIL 355</name>
+        <name>PHIL 356</name>
+        <name>PHIL 357</name>
+        <name>PHIL 452</name>
+        <name>PHIL 453</name>
+        <name>PHIL 454</name>
+      </group>
+      <group credits="3" name="Group E">
+        <name>PHIL 360</name>
+        <name>PHIL 361</name>
+        <name>PHIL 366</name>
+        <name>PHIL 367</name>
+        <name>PHIL 444</name>
+        <name>PHIL 445</name>
+      </group>
+    </complementary>
+    <complementary count="1">
+      <group credits="3" name="3 additional credits from Groups A-E or from other Philosophy courses">
+        <level>PHIL 2</level>
+        <level>PHIL 3</level>
+        <level>PHIL 4</level>
+        <level>PHIL 5</level>
+      </group>
+    </complementary>
+  </program>
+</life>
